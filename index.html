@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Battle - Modular Architecture</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen active">
+        <div class="loading-container">
+            <div class="spinner"></div>
+            <p>Loading Typing Battle...</p>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <div class="game-logo">
+                <h1>Typing Battle</h1>
+                <div class="cute-characters">
+                    <div class="character">🤖</div>
+                    <div class="character">🍞</div>
+                    <div class="character">💙</div>
+                </div>
+            </div>
+            
+            <div class="login-form">
+                <input type="text" id="userId" placeholder="User ID" class="login-input">
+                <input type="password" id="password" placeholder="Password" class="login-input">
+                
+                <button id="startGameBtn" class="main-btn">Start Game</button>
+                
+                <div class="secondary-buttons">
+                    <button id="skinListBtn" class="secondary-btn">Skins</button>
+                    <button id="spectatorBtn" class="secondary-btn">Spectate</button>
+                    <button id="settingsBtn" class="settings-btn">⚙️</button>
+                </div>
+            </div>
+            
+            <div class="profile-preview">
+                <div class="profile-avatar" id="profileAvatar">😊</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skin Selection Screen -->
+    <div id="skinScreen" class="screen">
+        <div class="skin-container">
+            <h2>Select Skin</h2>
+            <div class="skin-grid" id="skinGrid"></div>
+            <button id="backToLoginBtn" class="back-btn">Back</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Game UI Overlay -->
+        <div class="game-ui">
+            <!-- Player Info -->
+            <div class="player-info" id="playerInfo">
+                <div class="player-avatar" id="gamePlayerAvatar">😊</div>
+                <div class="player-name" id="gamePlayerName">Player</div>
+                <div class="health-bar">
+                    <div class="health-fill" id="healthFill"></div>
+                    <span class="health-text" id="healthText">100</span>
+                </div>
+            </div>
+            
+            <!-- Player List -->
+            <div class="player-list" id="playerList">
+                <h3>Players</h3>
+                <div class="players" id="playersContainer"></div>
+            </div>
+            
+            <!-- Inventory -->
+            <div class="inventory" id="inventory">
+                <h3>Inventory</h3>
+                <div class="inventory-grid" id="inventoryGrid"></div>
+            </div>
+            
+            <!-- Typing Input -->
+            <div class="typing-input">
+                <input type="text" id="typingField" placeholder="Type here..." autocomplete="off">
+                <button id="submitWord">▶</button>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button id="exitGameBtn" class="control-btn">Exit</button>
+                <button id="pauseGameBtn" class="control-btn">Pause</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Error</h2>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <!-- Core Modules -->
+    <script src="js/core/EventEmitter.js"></script>
+    <script src="js/core/Logger.js"></script>
+    <script src="js/core/Config.js"></script>
+    <script src="js/core/Utils.js"></script>
+    
+    <!-- Game Modules -->
+    <script src="js/modules/StateManager.js"></script>
+    <script src="js/modules/NetworkManager.js"></script>
+    <script src="js/modules/AudioManager.js"></script>
+    <script src="js/modules/InputManager.js"></script>
+    <script src="js/modules/UIManager.js"></script>
+    <script src="js/modules/RenderEngine.js"></script>
+    <script src="js/modules/GameLogic.js"></script>
+    <script src="js/modules/ScreenManager.js"></script>
+    
+    <!-- Game Engine -->
+    <script src="js/GameEngine.js"></script>
+    
+    <!-- Application Entry Point -->
+    <script src="js/app.js"></script>
+</body>
+</html>
